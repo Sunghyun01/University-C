@@ -17,7 +17,7 @@ int main(){
     struct info p[3]; 
     
     printf("3명의 학생 정보를 입력하시오\n");
-    // compare 함수 선 언  
+    // compare 함수 선언  
     int compare(const void *a, const void *b);
     int i;
     //국가 배열 선언 
@@ -44,10 +44,14 @@ int main(){
         }else{
             p[i].year = 18;
         }
+        
+        //연도 구하기  
         p[i].year = (p[i].year*100) + (((int) p[i].num[0] - (int) '0') * 10) + ((int) p[i].num[1] - (int) '0');
         
+        //나라 구하기  
         strcpy(p[i].country,country[r]);
         
+        //성별 구하기  
         if(r%2==0){
         	strcpy(p[i].gender, "여자");
         }else{
@@ -74,6 +78,7 @@ int main(){
     //qsort 라이브러리 사용 오름차순 정렬
     qsort(p,3,sizeof(struct info),compare);
     
+    //정렬된 결과 출력  
     for(i=0; i<3; i++){
         printf("%s, %d년 %c%c월 %c%c일, %s, %s, %s, %s \n",p[i].name,p[i].year,p[i].num[2],p[i].num[3],p[i].num[4],p[i].num[5],p[i].yoon,p[i].country,p[i].gender,p[i].department );
     }
